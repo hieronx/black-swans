@@ -1,14 +1,17 @@
 import React, { PureComponent } from 'react';
 import './App.css';
 
+import Counter from './Counter/Counter'
 import Swan from './Swan/Swan'
 
 const BLACK_SWAN_OCCURRENCE_RATIO = 0.001 // 1 out of 1000 swans are black
 
-const MIN_TIME_TRAVEL_DELAY = 5 // 10 ms delay at the least
+const MIN_TIME_TRAVEL_DELAY = 5 // Minimum delay between spawning swans during time travel mode, in ms
 
 const SWAN_IMAGE_WIDTH = 100
 const SWAN_IMAGE_HEIGHT = 60
+
+const EMPTY_HEADER_HEIGHT = 200
 
 function guid() {
   function s4() {
@@ -23,7 +26,7 @@ class App extends PureComponent {
 
   state = {
     swans: [],
-    currentZIndex: 5,
+    count: 0,
     currentTimeTravelTimeout: 200,
     hasFoundBlackSwan: false
   }
@@ -48,7 +51,7 @@ class App extends PureComponent {
     const screenWidth = window.innerWidth
     const screenHeight = window.innerHeight
 
-    const randomPositionTop = Math.floor(Math.random() * (screenHeight - SWAN_IMAGE_HEIGHT))
+    const randomPositionTop = EMPTY_HEADER_HEIGHT + Math.floor(Math.random() * (screenHeight - SWAN_IMAGE_HEIGHT - EMPTY_HEADER_HEIGHT))
     const randomPositionLeft = Math.floor(Math.random() * (screenWidth - SWAN_IMAGE_WIDTH))
 
     const newSwan = {
@@ -56,12 +59,12 @@ class App extends PureComponent {
       type: swanType,
       top: randomPositionTop,
       left: randomPositionLeft,
-      zIndex: this.state.currentZIndex
+      zIndex: this.state.count + 5 // Minimum z-index is 5 to ensure the swans are above background elements
     }
 
     this.setState(prevState => ({
       swans: [...prevState.swans, newSwan],
-      currentZIndex: prevState.currentZIndex + 1,
+      count: this.state.count + 1,
       hasFoundBlackSwan: swanType === 'black'
     }))
   }
@@ -81,6 +84,8 @@ class App extends PureComponent {
   render() {
     return (
       <div className="App" onClick={() => this.spawnNewSwan()}>
+        <Counter count={this.state.count} />
+
         {this.state.swans.map((swan) =>
           <Swan key={swan.id} {...swan} />
         )}
