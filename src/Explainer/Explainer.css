@@ -1,3 +1,16 @@
 .Explainer {
     font-family: Arial, Helvetica, sans-serif;
+    padding: 0 20px 20px 20px;
+}
+
+.Explainer p {
+    font-size: 14px;
+    line-height: 26px;
+}
+
+.Explainer small {
+    margin-top: 40px;
+    display: block;
+    font-size: 12px;
+    font-style: italic;
 }

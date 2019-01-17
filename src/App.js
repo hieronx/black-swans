@@ -5,7 +5,7 @@ import Counter from './Counter/Counter'
 import Swan from './Swan/Swan'
 import Explainer from './Explainer/Explainer'
 
-const BLACK_SWAN_OCCURRENCE_RATIO = 0.001 // 1 out of 1000 swans are black
+const BLACK_SWAN_OCCURRENCE_RATIO = 0.005 // 1 out of 200 swans are black
 
 const MIN_TIME_TRAVEL_DELAY = 5 // Minimum delay between spawning swans during time travel mode, in ms
 
@@ -90,7 +90,7 @@ class App extends PureComponent {
           <Swan key={swan.id} {...swan} />
         )}
 
-        <Explainer isOpen={this.state.hasFoundBlackSwan} />
+        <Explainer isOpen={this.state.hasFoundBlackSwan} count={this.state.count} />
       </div>
     )
   }
