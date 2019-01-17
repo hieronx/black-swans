@@ -3,6 +3,7 @@ import './App.css';
 
 import Counter from './Counter/Counter'
 import Swan from './Swan/Swan'
+import Explainer from './Explainer/Explainer'
 
 const BLACK_SWAN_OCCURRENCE_RATIO = 0.001 // 1 out of 1000 swans are black
 
@@ -46,27 +47,26 @@ class App extends PureComponent {
   }
 
   spawnNewSwan = () => {
-    const swanType = Math.random() <= BLACK_SWAN_OCCURRENCE_RATIO ? 'black' : 'white'
+    if (!this.state.hasFoundBlackSwan) {
+      const swanType = Math.random() <= BLACK_SWAN_OCCURRENCE_RATIO ? 'black' : 'white'
 
-    const screenWidth = window.innerWidth
-    const screenHeight = window.innerHeight
+      const randomPositionTop = EMPTY_HEADER_HEIGHT + Math.floor(Math.random() * (window.innerHeight - SWAN_IMAGE_HEIGHT - EMPTY_HEADER_HEIGHT))
+      const randomPositionLeft = Math.floor(Math.random() * (window.innerWidth - SWAN_IMAGE_WIDTH))
 
-    const randomPositionTop = EMPTY_HEADER_HEIGHT + Math.floor(Math.random() * (screenHeight - SWAN_IMAGE_HEIGHT - EMPTY_HEADER_HEIGHT))
-    const randomPositionLeft = Math.floor(Math.random() * (screenWidth - SWAN_IMAGE_WIDTH))
+      const newSwan = {
+        id: guid(),
+        type: swanType,
+        top: randomPositionTop,
+        left: randomPositionLeft,
+        zIndex: this.state.count + 5 // Minimum z-index is 5 to ensure the swans are above background elements
+      }
 
-    const newSwan = {
-      id: guid(),
-      type: swanType,
-      top: randomPositionTop,
-      left: randomPositionLeft,
-      zIndex: this.state.count + 5 // Minimum z-index is 5 to ensure the swans are above background elements
+      this.setState(prevState => ({
+        swans: [...prevState.swans, newSwan],
+        count: this.state.count + 1,
+        hasFoundBlackSwan: swanType === 'black'
+      }))
     }
-
-    this.setState(prevState => ({
-      swans: [...prevState.swans, newSwan],
-      count: this.state.count + 1,
-      hasFoundBlackSwan: swanType === 'black'
-    }))
   }
 
   timeTravel = () => {
@@ -89,6 +89,8 @@ class App extends PureComponent {
         {this.state.swans.map((swan) =>
           <Swan key={swan.id} {...swan} />
         )}
+
+        <Explainer isOpen={this.state.hasFoundBlackSwan} />
       </div>
     )
   }
