@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import './App.css';
 
-import Swan from './Swan'
+import Swan from './Swan/Swan'
 
 const BLACK_SWAN_OCCURRENCE_RATIO = 0.001 // 1 out of 1000 swans are black
 
