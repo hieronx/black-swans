@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import './Swan.css';
 
-class Swan extends Component {
+class Swan extends PureComponent {
 
   render() {
     return (
