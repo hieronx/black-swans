@@ -1,0 +1,9 @@
+.Swan {
+    position: absolute;
+}
+
+.Swan img {
+    width: 100px;
+    height: 60px;
+    user-select: none;
+}
