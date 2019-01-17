@@ -11,7 +11,7 @@ const MIN_TIME_TRAVEL_DELAY = 5 // Minimum delay between spawning swans during t
 const SWAN_IMAGE_WIDTH = 100
 const SWAN_IMAGE_HEIGHT = 60
 
-const EMPTY_HEADER_HEIGHT = 200
+const EMPTY_HEADER_HEIGHT = 180
 
 function guid() {
   function s4() {
@@ -37,10 +37,10 @@ class App extends PureComponent {
 
   handleKeyboardEvents = (event) => {
     if (event.keyCode === 32) {
-      // Space bar
+      // SPACE bar
       this.spawnNewSwan()
-    } else if (event.keyCode === 13) {
-      // ENTER
+    } else if (event.keyCode === 84) {
+      // T key
       this.timeTravel()
     }
   }
@@ -74,7 +74,7 @@ class App extends PureComponent {
       this.spawnNewSwan()
       setTimeout(() => {
         // Start by spawning every second, and slowly decrease the timeout, until it spawns 20 swans per second
-        if (this.state.currentTimeTravelTimeout > MIN_TIME_TRAVEL_DELAY) this.setState({ currentTimeTravelTimeout: this.state.currentTimeTravelTimeout - 10 })
+        if (this.state.currentTimeTravelTimeout > MIN_TIME_TRAVEL_DELAY) this.setState({ currentTimeTravelTimeout: this.state.currentTimeTravelTimeout - MIN_TIME_TRAVEL_DELAY })
 
         this.timeTravel()
       }, this.state.currentTimeTravelTimeout)
