@@ -1,13 +1,13 @@
 {
-  "main.css": "/black-swans/static/css/main.64bf9175.chunk.css",
-  "main.js": "/black-swans/static/js/main.61b4bd16.chunk.js",
-  "main.js.map": "/black-swans/static/js/main.61b4bd16.chunk.js.map",
-  "static/js/1.38b01efa.chunk.js": "/black-swans/static/js/1.38b01efa.chunk.js",
-  "static/js/1.38b01efa.chunk.js.map": "/black-swans/static/js/1.38b01efa.chunk.js.map",
-  "runtime~main.js": "/black-swans/static/js/runtime~main.4bfe28d0.js",
-  "runtime~main.js.map": "/black-swans/static/js/runtime~main.4bfe28d0.js.map",
-  "static/css/main.64bf9175.chunk.css.map": "/black-swans/static/css/main.64bf9175.chunk.css.map",
-  "index.html": "/black-swans/index.html",
-  "precache-manifest.60e174c76f9c93289d0e5f5730393fb5.js": "/black-swans/precache-manifest.60e174c76f9c93289d0e5f5730393fb5.js",
-  "service-worker.js": "/black-swans/service-worker.js"
+  "main.css": "/static/css/main.64bf9175.chunk.css",
+  "main.js": "/static/js/main.61b4bd16.chunk.js",
+  "main.js.map": "/static/js/main.61b4bd16.chunk.js.map",
+  "static/js/1.38b01efa.chunk.js": "/static/js/1.38b01efa.chunk.js",
+  "static/js/1.38b01efa.chunk.js.map": "/static/js/1.38b01efa.chunk.js.map",
+  "runtime~main.js": "/static/js/runtime~main.229c360f.js",
+  "runtime~main.js.map": "/static/js/runtime~main.229c360f.js.map",
+  "static/css/main.64bf9175.chunk.css.map": "/static/css/main.64bf9175.chunk.css.map",
+  "index.html": "/index.html",
+  "precache-manifest.6a697f357521c1cba613250fc84ddf2d.js": "/precache-manifest.6a697f357521c1cba613250fc84ddf2d.js",
+  "service-worker.js": "/service-worker.js"
 }
