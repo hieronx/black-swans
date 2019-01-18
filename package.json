@@ -1,6 +1,7 @@
 {
   "name": "black-swans",
   "version": "0.1.0",
+  "homepage": "http://offerijns.github.io/black-swans",
   "private": true,
   "dependencies": {
     "react": "^16.7.0",
